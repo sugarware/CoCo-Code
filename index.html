@@ -239,7 +239,7 @@
       content:""; position:absolute; top:100%; left:0;
       width:1px; height:2px; pointer-events:none;
     }
-    /* v2.61 startup diagnostic: visible before app JavaScript initialization completes. */
+    /* v2.67 startup diagnostic: visible before app JavaScript initialization completes. */
     #startupProbe { position:fixed; inset:0; z-index:99999; display:flex; align-items:center; justify-content:center; background:var(--bg); color:var(--text); font-weight:700; }
     #startupProbe.hidden { display:none; }
   </style>
@@ -249,7 +249,7 @@
   <div class="app">
     <header>
       <div>
-        <div class="title-row"><h1>ここコード</h1><span class="header-version">v2.61</span></div>
+        <div class="title-row"><h1>ここコード</h1><span class="header-version">v2.67</span></div>
         <div class="sub">ここで使うコードを、今すぐ表示！</div>
       </div>
       <div class="toolbar">
@@ -278,7 +278,7 @@
       <main id="listRight" class="list" aria-label="ID一覧 右側"></main>
 
       <div class="footnote">
-        v2.61 — item menu wording and add/edit title clarification; startup diagnostic retained.
+        v2.67 — item menu wording and add/edit title clarification; startup diagnostic retained.
       </div>
     </div>
   </div>
@@ -500,7 +500,7 @@
     const SETTINGS_KEY = "idPortalSettings.v10";
     const INITIALIZED_KEY = "idPortalInitialized.v219";
     const INITIAL_SETTINGS = {"tags":[{"id":"tag-shopping","name":"🛒：買い物","color":"lavender"},{"id":"tag-event","name":"🎫：イベント","color":"darkblue"}],"starColor":"navy","locationColor":"vividlime","searchColor":"white","untaggedColor":"yellow","layout":"dark","language":"ja"};
-    const INITIAL_ITEMS = [{"id":"sample-cocomart","name":"ココマート会員証","type":"barcode","value":"COCOMART-SAMPLE-001","barcodeFormat":"CODE128","color":"green","favorite":true,"tagIds":["tag-shopping"],"codeSpec":{"symbology":"CODE128","source":"sample","detected":{"symbology":true}},"memo":"これは使い方を試すための架空の会員証です。実際のサービスでは使用できません。","validityType":"daily","validDate":"","locations":[{"lat":35.681236,"lng":139.767125,"label":"東京駅"},{"lat":34.702485,"lng":135.495951,"label":"大阪駅"}]},{"id":"sample-rakutenpay","name":"楽天ペイ","type":"app1","value":"rakutenpay://","barcodeFormat":"CODE128","color":"pink","favorite":true,"tagIds":["tag-shopping"],"codeSpec":null,"memo":"楽天ペイアプリがインストールされている場合に起動できます。インストールされていない端末では利用できません。","validityType":"daily","validDate":"","locations":[]},{"id":"sample-paypay","name":"PayPay","type":"app1","value":"PayPay://","barcodeFormat":"CODE128","color":"pink","favorite":true,"tagIds":["tag-shopping"],"codeSpec":null,"memo":"PayPayアプリがインストールされている場合に起動できます。インストールされていない端末では利用できません。","validityType":"daily","validDate":"","locations":[]},{"id":"sample-cocogolf","name":"ココゴルフ会員証","type":"qr","value":"COCOGOLF-SAMPLE-001","barcodeFormat":"CODE128","color":"vividgreen","favorite":true,"tagIds":["tag-event"],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOGOLF-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"これは使い方を試すための架空のゴルフ場会員証です。実際のサービスでは使用できません。","validityType":"daily","validDate":"","locations":[{"lat":33.503,"lng":-82.0205,"label":"オーガスタ・ナショナル・ゴルフクラブ"}]},{"id":"sample-cocofes-2027","name":"ココフェス2027 入場券","type":"qr","value":"COCOFES-2027-SAMPLE-001","barcodeFormat":"CODE128","color":"blue","favorite":false,"tagIds":["tag-event"],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOFES-2027-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"2027年10月17日に東京ビッグサイトで開催される架空イベントの入場券です。","validityType":"date","validDate":"2027-10-17","locations":[{"lat":35.6298,"lng":139.7942,"label":"東京ビッグサイト"}]},{"id":"sample-cocofes-2026","name":"ココフェス2026 入場券","type":"qr","value":"COCOFES-2026-SAMPLE-001","barcodeFormat":"CODE128","color":"blue","favorite":false,"tagIds":[],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOFES-2026-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"有効期間が終了したためTagを外したサンプルです。終了した項目を削除せず残しておくこともできます。","validityType":"date","validDate":"2026-10-17","locations":[{"lat":35.6298,"lng":139.7942,"label":"東京ビッグサイト"}]},{"id":"sample-emojidas","name":"絵文字ダス","type":"link","value":"https://sugarware.github.io/EmojiDas/","barcodeFormat":"CODE128","color":"vividblue","favorite":false,"tagIds":[],"codeSpec":null,"memo":"タグ表示に使える絵文字を探す為のWebアプリを起動します","validityType":"daily","validDate":"","locations":[]},      {"id":"sample-cococode-share","name":"ここコード","type":"qr","value":"https://sugarware.github.io/ID-Portal","barcodeFormat":"CODE128","color":"vividblue","favorite":true,"tagIds":[],"codeSpec":null,"memo":"ここコードを他の人に紹介するための公開URLです。","validityType":"daily","validDate":"","locations":[]},{"id":"sample-shopping-memo","name":"買い物リスト","type":"memo","value":"","barcodeFormat":"CODE128","color":"cream","favorite":true,"tagIds":["tag-shopping"],"codeSpec":null,"memo":"牛乳\n卵\nティッシュ\n電池","validityType":"daily","validDate":"","locations":[]}];
+    const INITIAL_ITEMS = [{"id":"sample-cocomart","name":"ココマート会員証","type":"barcode","value":"COCOMART-SAMPLE-001","barcodeFormat":"CODE128","color":"green","favorite":true,"tagIds":["tag-shopping"],"codeSpec":{"symbology":"CODE128","source":"sample","detected":{"symbology":true}},"memo":"これは使い方を試すための架空の会員証です。実際のサービスでは使用できません。","validityType":"daily","validDate":"","locations":[{"lat":35.681236,"lng":139.767125,"label":"東京駅"},{"lat":34.702485,"lng":135.495951,"label":"大阪駅"}]},{"id":"sample-rakutenpay","name":"楽天ペイ","type":"app1","value":"rakutenpay://","barcodeFormat":"CODE128","color":"pink","favorite":true,"tagIds":["tag-shopping"],"codeSpec":null,"memo":"楽天ペイアプリがインストールされている場合に起動できます。インストールされていない端末では利用できません。","validityType":"daily","validDate":"","locations":[]},{"id":"sample-paypay","name":"PayPay","type":"app1","value":"PayPay://","barcodeFormat":"CODE128","color":"pink","favorite":true,"tagIds":["tag-shopping"],"codeSpec":null,"memo":"PayPayアプリがインストールされている場合に起動できます。インストールされていない端末では利用できません。","validityType":"daily","validDate":"","locations":[]},{"id":"sample-cocogolf","name":"ココゴルフ会員証","type":"qr","value":"COCOGOLF-SAMPLE-001","barcodeFormat":"CODE128","color":"vividgreen","favorite":true,"tagIds":["tag-event"],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOGOLF-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"これは使い方を試すための架空のゴルフ場会員証です。実際のサービスでは使用できません。","validityType":"daily","validDate":"","locations":[{"lat":33.503,"lng":-82.0205,"label":"オーガスタ・ナショナル・ゴルフクラブ"}]},{"id":"sample-cocofes-2027","name":"ココフェス2027 入場券","type":"qr","value":"COCOFES-2027-SAMPLE-001","barcodeFormat":"CODE128","color":"blue","favorite":false,"tagIds":["tag-event"],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOFES-2027-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"2027年10月17日に東京ビッグサイトで開催される架空イベントの入場券です。","validityType":"date","validDate":"2027-10-17","locations":[{"lat":35.6298,"lng":139.7942,"label":"東京ビッグサイト"}]},{"id":"sample-cocofes-2026","name":"ココフェス2026 入場券","type":"qr","value":"COCOFES-2026-SAMPLE-001","barcodeFormat":"CODE128","color":"blue","favorite":false,"tagIds":[],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOFES-2026-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"有効期間が終了したためTagを外したサンプルです。終了した項目を削除せず残しておくこともできます。","validityType":"date","validDate":"2026-10-17","locations":[{"lat":35.6298,"lng":139.7942,"label":"東京ビッグサイト"}]},{"id":"sample-emojidas","name":"絵文字ダス","type":"link","value":"https://sugarware.github.io/EmojiDas/","barcodeFormat":"CODE128","color":"vividblue","favorite":false,"tagIds":[],"codeSpec":null,"memo":"タグ表示に使える絵文字を探す為のWebアプリを起動します","validityType":"daily","validDate":"","locations":[]},      {"id":"sample-cococode-share","name":"ここコード","type":"qr","value":"https://sugarware.github.io/CoCo-Code","barcodeFormat":"CODE128","color":"vividblue","favorite":true,"tagIds":[],"codeSpec":null,"memo":"ここコードを他の人に紹介するための公開URLです。","validityType":"daily","validDate":"","locations":[]},{"id":"sample-shopping-memo","name":"買い物リスト","type":"memo","value":"","barcodeFormat":"CODE128","color":"cream","favorite":true,"tagIds":["tag-shopping"],"codeSpec":null,"memo":"牛乳\n卵\nティッシュ\n電池","validityType":"daily","validDate":"","locations":[]}];
 
     const INITIAL_SETTINGS_EN = {"tags":[{"id":"tag-shopping","name":"🛒:Shopping","color":"lavender"},{"id":"tag-event","name":"🎫:Events","color":"darkblue"}],"starColor":"navy","locationColor":"vividlime","searchColor":"white","untaggedColor":"yellow","layout":"dark","language":"en"};
     const INITIAL_ITEMS_EN = [
@@ -511,7 +511,7 @@
       {"id":"sample-cocofes-2027","name":"CoCoFes 2027 Ticket","type":"qr","value":"COCOFES-2027-SAMPLE-001","barcodeFormat":"CODE128","color":"blue","favorite":false,"tagIds":["tag-event"],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOFES-2027-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"A ticket for a fictional event at Tokyo Big Sight on October 17, 2027.","validityType":"date","validDate":"2027-10-17","locations":[{"lat":35.6298,"lng":139.7942,"label":"Tokyo Big Sight"}]},
       {"id":"sample-cocofes-2026","name":"CoCoFes 2026 Ticket","type":"qr","value":"COCOFES-2026-SAMPLE-001","barcodeFormat":"CODE128","color":"blue","favorite":false,"tagIds":[],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOFES-2026-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"A sample whose Tag was removed after its validity period ended. Finished items can be kept without deleting them.","validityType":"date","validDate":"2026-10-17","locations":[{"lat":35.6298,"lng":139.7942,"label":"Tokyo Big Sight"}]},
       {"id":"sample-emojidas","name":"EmojiDas","type":"link","value":"https://sugarware.github.io/EmojiDas/","barcodeFormat":"CODE128","color":"vividblue","favorite":false,"tagIds":[],"codeSpec":null,"memo":"Opens a Web app for finding emoji that can be used in Tag labels.","validityType":"daily","validDate":"","locations":[]},
-      {"id":"sample-cococode-share","name":"CoCo-Code","type":"qr","value":"https://sugarware.github.io/ID-Portal","barcodeFormat":"CODE128","color":"vividblue","favorite":true,"tagIds":[],"codeSpec":null,"memo":"Public URL for sharing CoCo-Code with others.","validityType":"daily","validDate":"","locations":[]},
+      {"id":"sample-cococode-share","name":"CoCo-Code","type":"qr","value":"https://sugarware.github.io/CoCo-Code","barcodeFormat":"CODE128","color":"vividblue","favorite":true,"tagIds":[],"codeSpec":null,"memo":"Public URL for sharing CoCo-Code with others.","validityType":"daily","validDate":"","locations":[]},
       {"id":"sample-shopping-memo","name":"Shopping List","type":"memo","value":"","barcodeFormat":"CODE128","color":"cream","favorite":true,"tagIds":["tag-shopping"],"codeSpec":null,"memo":"Milk\nEggs\nTissues\nBatteries","validityType":"daily","validDate":"","locations":[]}
     ];
 
@@ -524,17 +524,26 @@
       {"id":"sample-cocofes-2027","name":"CoCoFes 2027 入场券","type":"qr","value":"COCOFES-2027-SAMPLE-001","barcodeFormat":"CODE128","color":"blue","favorite":false,"tagIds":["tag-event"],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOFES-2027-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"这是一个虚构活动的入场券，活动日期为2027年10月17日，地点为东京国际展览中心。","validityType":"date","validDate":"2027-10-17","locations":[{"lat":35.6298,"lng":139.7942,"label":"东京国际展览中心"}]},
       {"id":"sample-cocofes-2026","name":"CoCoFes 2026 入场券","type":"qr","value":"COCOFES-2026-SAMPLE-001","barcodeFormat":"CODE128","color":"blue","favorite":false,"tagIds":[],"codeSpec":{"symbology":"QR_CODE","version":null,"errorCorrection":null,"maskPattern":null,"mode":"alphanumeric","segments":[{"mode":"alphanumeric","text":"COCOFES-2026-SAMPLE-001"}],"characterEncoding":null,"source":"legacy","detected":{"symbology":true,"mode":false,"version":false,"errorCorrection":false,"maskPattern":false}},"memo":"这是一个有效期已结束并移除 Tag 的示例。已结束的项目也可以保留而不删除。","validityType":"date","validDate":"2026-10-17","locations":[{"lat":35.6298,"lng":139.7942,"label":"东京国际展览中心"}]},
       {"id":"sample-emojidas","name":"EmojiDas","type":"link","value":"https://sugarware.github.io/EmojiDas/","barcodeFormat":"CODE128","color":"vividblue","favorite":false,"tagIds":[],"codeSpec":null,"memo":"打开用于查找可用于 Tag 标签的表情符号 Web 应用。","validityType":"daily","validDate":"","locations":[]},
-      {"id":"sample-cococode-share","name":"这里码","type":"qr","value":"https://sugarware.github.io/ID-Portal","barcodeFormat":"CODE128","color":"vividblue","favorite":true,"tagIds":[],"codeSpec":null,"memo":"用于向他人分享这里码的公开网址。","validityType":"daily","validDate":"","locations":[]},
+      {"id":"sample-cococode-share","name":"这里码","type":"qr","value":"https://sugarware.github.io/CoCo-Code","barcodeFormat":"CODE128","color":"vividblue","favorite":true,"tagIds":[],"codeSpec":null,"memo":"用于向他人分享这里码的公开网址。","validityType":"daily","validDate":"","locations":[]},
       {"id":"sample-shopping-memo","name":"购物清单","type":"memo","value":"","barcodeFormat":"CODE128","color":"cream","favorite":true,"tagIds":["tag-shopping"],"codeSpec":null,"memo":"牛奶\n鸡蛋\n纸巾\n电池","validityType":"daily","validDate":"","locations":[]}
     ];
 
     function cloneInitial(value) { return JSON.parse(JSON.stringify(value)); }
+    function detectSystemLanguage() {
+      const lang=String(navigator.language || "").toLowerCase();
+      if (lang.startsWith("ja")) return "ja";
+      if (lang.startsWith("zh")) return "zh";
+      return "en";
+    }
     function ensureInitialData() {
       if (localStorage.getItem(INITIALIZED_KEY) === "1") return;
       const hasExisting = localStorage.getItem(STORAGE_KEY) !== null || localStorage.getItem(SETTINGS_KEY) !== null;
       if (!hasExisting) {
-        localStorage.setItem(SETTINGS_KEY, JSON.stringify(INITIAL_SETTINGS));
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(INITIAL_ITEMS));
+        const initialLang=detectSystemLanguage();
+        const initialSettings=initialLang === "en" ? INITIAL_SETTINGS_EN : initialLang === "zh" ? INITIAL_SETTINGS_ZH : INITIAL_SETTINGS;
+        const initialItems=initialLang === "en" ? INITIAL_ITEMS_EN : initialLang === "zh" ? INITIAL_ITEMS_ZH : INITIAL_ITEMS;
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(initialSettings));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(initialItems));
       }
       localStorage.setItem(INITIALIZED_KEY, "1");
     }
@@ -678,6 +687,21 @@
       "写真や保存画像に含まれるQRコード／バーコードを読み取って登録します。":"从照片或已保存的图片中扫描二维码/条形码并登记。", "カメラでQRコード／バーコードを読み取って登録します。":"使用相机扫描二维码/条形码并登记。", "QRコードなどをここコードに保存せず、必要なときに公式アプリを起動する項目を登録します。":"登记一个在需要时启动官方应用的项目，而不在 CoCo-Code 中保存二维码等内容。", "コード内容や種類などを手入力・確認するための詳細設定を表示／非表示にします。":"显示或隐藏高级设置，用于手动输入和确认代码内容、类型等。", "ショートカット作成に使う名前をクリップボードへコピーします。":"将创建快捷指令时使用的名称复制到剪贴板。", "Appleショートカットの作成を開始します。":"开始创建 Apple 快捷指令。", "登録したショートカットから目的のアプリが起動するか確認します。":"确认已登记的快捷指令能否启动目标应用。", "現在地を、このID項目を利用する場所として追加します。":"将当前位置添加为使用此 ID 项目的地点。", "地図から、このID項目を利用する場所を選んで追加します。":"从地图中选择并添加使用此 ID 项目的地点。", "このID項目を一覧に表示するときのボタン色を変更します。":"更改此 ID 项目在列表中的按钮颜色。", "このID項目をここコードから削除します。":"从 CoCo-Code 中删除此 ID 项目。", "地名や施設名などを検索して、登録する位置を探します。":"搜索地名或设施名称，查找要登记的位置。", "地図で選択している位置を、このID項目の利用場所として追加します。":"将地图中选中的位置添加为此 ID 项目的使用地点。", "読み取った内容からQRコードを新しく生成して表示します。元のQRパターンとは異なる場合があります。":"根据识别出的内容重新生成并显示二维码。图案可能与原二维码不同。", "お気に入りタブの表示色を変更します。":"更改“收藏”标签页的颜色。", "現在地タブの表示色を変更します。":"更改“附近”标签页的颜色。", "検索タブの表示色を変更します。":"更改“搜索”标签页的颜色。", "タグ無しタブの表示色を変更します。":"更改“无标签”标签页的颜色。", "まだタグが付いていない項目を表示します。":"显示尚未添加任何 Tag 的项目。"
     });
 
+    Object.assign(EN_TEXT, {
+      "タグ":"Tag", "タグ無し":"Untagged", "検出開始":"Start Detection", "検出中…":"Detecting…",
+      "項目データを読み取りました":"Item Data Scanned", "位置情報だけ追加":"Add Locations Only", "項目データを置き換え":"Replace Item Data",
+      "取り込み方法を選んでください。":"Choose how to import this item.", "地図を読み込めませんでした。通信状態を確認してください。":"Could not load the map. Check your connection.",
+      "この地図の周辺では見つかりませんでした。地図を目的地付近へ移動・拡大して再検索してください。":"Nothing was found in this map area. Move or zoom the map near your destination and search again.",
+      "検索できませんでした。通信状態を確認してください。":"Search failed. Check your connection.", "ここコード 項目データ":"CoCo-Code Item Data"
+    });
+    Object.assign(ZH_TEXT, {
+      "タグ":"Tag", "検出開始":"开始检测", "検出中…":"检测中…",
+      "項目データを読み取りました":"已读取项目数据", "位置情報だけ追加":"仅添加位置信息", "項目データを置き換え":"替换项目数据",
+      "取り込み方法を選んでください。":"请选择导入方式。", "地図を読み込めませんでした。通信状態を確認してください。":"无法加载地图，请检查网络连接。",
+      "この地図の周辺では見つかりませんでした。地図を目的地付近へ移動・拡大して再検索してください。":"在当前地图范围内未找到结果。请将地图移动或缩放到目的地附近后重新搜索。",
+      "検索できませんでした。通信状態を確認してください。":"搜索失败，请检查网络连接。", "ここコード 項目データ":"CoCo-Code 项目数据"
+    });
+
     function currentLanguage(){ return settings?.language === "en" ? "en" : settings?.language === "zh" ? "zh" : "ja"; }
     function tr(ja,en,zh){ const l=currentLanguage(); return l==="en" ? en : l==="zh" ? (zh || ja) : ja; }
     const nativeAlert=window.alert.bind(window), nativeConfirm=window.confirm.bind(window);
@@ -700,8 +724,30 @@
          .replace(/^「(.+)」をコピーしました。$/, '已复制“$1”。');
       return x;
     }
-    window.alert=(text)=>nativeAlert(currentLanguage()==="zh"?zhMessage(text):text);
-    window.confirm=(text)=>nativeConfirm(currentLanguage()==="zh"?zhMessage(text):text);
+    function enMessage(text){
+      let x=String(text);
+      const exact={
+        "このデータは読み込めませんでした。\n現在のデータは変更されていません。":"This data could not be imported.\nCurrent data has not been changed.",
+        "位置情報を取得できませんでした。位置情報の利用を許可してから、もう一度お試しください。":"Could not get your location. Allow location access and try again.",
+        "現在地を取得できませんでした。電波状況の良い場所で、もう一度お試しください。":"Could not get your current location. Try again where reception is better.",
+        "現在地の取得がタイムアウトしました。もう一度お試しください。":"Getting your current location timed out. Please try again.",
+        "現在地を取得できませんでした。位置情報の設定を確認して、もう一度お試しください。":"Could not get your current location. Check location settings and try again.",
+        "現在地情報の有効時間が切れています。📍タブをタップして現在地を更新してください。":"Location information has expired. Double-tap 📍 to update your current location.",
+        "表示名を入力してください。":"Enter a display name.", "URLスキームを入力してください。":"Enter a URL scheme.", "URLを入力してください。":"Enter a URL.", "ショートカット名を入力してください。":"Enter a Shortcut name.", "コード内容を入力してください。":"Enter code content.", "有効期間の日付を選択してください。":"Select a validity date.", "Linkの起動準備中です。少し待ってからもう一度タップしてください。":"Preparing to open the link. Wait a moment and tap again.", "現在地を更新しました":"Current location updated.", "地図上で位置を選択してください。":"Select a location on the map.", "QRコード生成機能を読み込めませんでした。":"Could not load the QR code generator.", "コードを生成できませんでした。形式と内容を確認してください。":"Could not generate the code. Check its format and content.", "カメラを開始できませんでした。ブラウザのカメラ権限を確認してください。":"Could not start the camera. Check browser camera permission.", "コードを読み取れませんでした。別の画像を試すか、手入力してください。":"Could not scan the code. Try another image or enter it manually.", "データと設定を初期状態に戻しました。":"Data and settings have been reset.",
+        "設定を保存できませんでした。端末の空き容量やブラウザの保存設定を確認してください。":"Could not save settings. Check available storage and browser storage settings.", "IDデータを保存できませんでした。端末の空き容量やブラウザの保存設定を確認してください。":"Could not save ID data. Check available storage and browser storage settings.",
+        "Tag名の先頭にはコロンを置けません。コロンの前に表示する文字を入力してください。":"A Tag name cannot start with a colon. Enter text before the colon."
+      };
+      if(exact[x]) return exact[x];
+      x=x.replace(/^ID項目「(.+)」を削除しますか？$/, 'Delete ID item “$1”?')
+         .replace(/^現在の(\d+)件を、読み込んだ(\d+)件で置き換えますか？$/, 'Replace the current $1 items with the $2 imported items?')
+         .replace(/^(\d+)件を読み込みました。/, 'Imported $1 items.')
+         .replace(/(\d+)項目で存在しないTagを外しました。/, 'Removed nonexistent Tags from $1 items.')
+         .replace(/^「(.+)」をコピーしました。$/, 'Copied “$1”.');
+      return x;
+    }
+    function localizedMessage(text){ return currentLanguage()==="en"?enMessage(text):currentLanguage()==="zh"?zhMessage(text):text; }
+    window.alert=(text)=>nativeAlert(localizedMessage(text));
+    window.confirm=(text)=>nativeConfirm(localizedMessage(text));
 
     function translateDom(root=document) {
       const lang=currentLanguage();
@@ -732,7 +778,7 @@
       const appTitle=document.querySelector("header h1");
       if(appTitle) appTitle.textContent=lang==="ja"?"ここコード":lang==="zh"?"这里码":"CoCo-Code";
       const headerVersion=document.querySelector(".header-version");
-      if(headerVersion) headerVersion.textContent="v2.61";
+      if(headerVersion) headerVersion.textContent="v2.67";
       document.title=lang==="ja"?"ここコード":lang==="zh"?"这里码":"CoCo-Code";
       render?.();
       if(appTitle) appTitle.textContent=lang==="ja"?"ここコード":lang==="zh"?"这里码":"CoCo-Code";
@@ -995,7 +1041,7 @@
         b.addEventListener("click",()=>{ editTagIds=editTagIds.includes(tag.id)?editTagIds.filter(id=>id!==tag.id):[...editTagIds,tag.id]; refreshTagSelector(); });
         tagSelector.appendChild(b);
       });
-      if (!settings.tags.length) { const n=document.createElement("div"); n.className="notice"; n.textContent="Tagがありません。タブ設定から追加できます。"; tagSelector.appendChild(n); }
+      if (!settings.tags.length) { const n=document.createElement("div"); n.className="notice"; n.textContent=tr("Tagがありません。タブ設定から追加できます。","There are no Tags. Add one in Tab Settings.","还没有 Tag。可在标签页设置中添加。"); tagSelector.appendChild(n); }
     }
 
     function refreshSelectedTabName(count) {
@@ -1014,7 +1060,7 @@
       groupTabScroll.innerHTML="";
       settings.tags.forEach(tag=>{
         const btn=document.createElement("button");btn.className="tab";btn.type="button";btn.dataset.tab=`tag:${tag.id}`;btn.dataset.fullName=tagFullLabel(tag.name);btn.setAttribute("aria-label",tagFullLabel(tag.name));btn.textContent=tagShortLabel(tag.name);
-        btn.style.background=GROUP_COLOR_HEX[tag.color];btn.style.color=isDarkColor(tag.color)?"#fff":"#171717";btn.classList.toggle("active",activeTab===`tag:${tag.id}`);wireHelpLongPress(btn,"タグ",`「${tagFullLabel(tag.name)}」が付いている項目だけを表示します。1つの項目に複数のタグを付けることもできます。`);groupTabScroll.appendChild(btn);
+        btn.style.background=GROUP_COLOR_HEX[tag.color];btn.style.color=isDarkColor(tag.color)?"#fff":"#171717";btn.classList.toggle("active",activeTab===`tag:${tag.id}`);wireHelpLongPress(btn,tr("タグ","Tag","Tag"),()=>tr(`「${tagFullLabel(tag.name)}」が付いている項目だけを表示します。1つの項目に複数のタグを付けることもできます。`,`Shows only items tagged “${tagFullLabel(tag.name)}”. One item can have multiple Tags.`,`只显示带有“${tagFullLabel(tag.name)}”Tag 的项目。一个项目可以有多个 Tag。`));groupTabScroll.appendChild(btn);
       });
       const unc=document.createElement("button");unc.className="tab";unc.type="button";unc.dataset.tab="untagged";unc.dataset.fullName="♻️タグ無し";unc.setAttribute("aria-label","♻️タグ無し");unc.textContent="♻️";unc.style.background=GROUP_COLOR_HEX[settings.untaggedColor];unc.style.color=isDarkColor(settings.untaggedColor)?"#fff":"#171717";unc.classList.toggle("active",activeTab==="untagged");wireHelpLongPress(unc,"タグ無し","まだタグが付いていない項目を表示します。");groupTabScroll.appendChild(unc);
       [["star",settings.starColor],["location",settings.locationColor],["search",settings.searchColor]].forEach(([key,col])=>{const c=validColorName(col,"white"),el=tabBar.querySelector(`[data-tab="${key}"]`);el.style.background=GROUP_COLOR_HEX[c];el.style.color=isDarkColor(c)?"#fff":"#171717";});
@@ -1161,7 +1207,7 @@
     }
 
     let suppressItemClickUntil=0;
-    const contextMenu=document.createElement("div"); contextMenu.className="context-menu"; contextMenu.innerHTML='<button type="button" data-action="settings">編集</button><button type="button" data-action="duplicate">複製</button><button type="button" data-action="item-export">項目export</button><button type="button" data-action="delete">削除</button><button type="button" data-action="cancel">キャンセル</button>'; document.body.appendChild(contextMenu);
+    const contextMenu=document.createElement("div"); contextMenu.className="context-menu"; contextMenu.innerHTML='<button type="button" data-action="settings">編集</button><button type="button" data-action="duplicate">複製</button><button type="button" data-action="item-export">項目export</button><button type="button" data-action="delete">削除</button><button type="button" data-action="cancel">キャンセル</button>'; document.body.appendChild(contextMenu); translateDom(contextMenu);
     let contextItemId=null;
     function closeContextMenu(){contextMenu.classList.remove("show");contextItemId=null;}
     function showContextMenu(item,x,y){contextItemId=item.id;contextMenu.classList.add("show");const w=150,h=230;contextMenu.style.left=`${Math.max(8,Math.min(x-w/2,innerWidth-w-8))}px`;contextMenu.style.top=`${Math.max(8,Math.min(y+8,innerHeight-h-8))}px`;suppressItemClickUntil=Date.now()+700;}
@@ -1353,13 +1399,13 @@
       const built=await buildItemExportQr(item);
       if(!built){ alert("項目データがCoCoマーク付きQR Version 40に安全に収まりません。メモや位置情報を減らしてから再度お試しください。"); return; }
       codeView.classList.remove("memo-view"); codeArea.classList.remove("hidden");
-      codeTitle.textContent=`項目export：${item.name}`; codeText.textContent="ここコード 項目データ"; codeVerify.textContent="";
+      codeTitle.textContent=tr(`項目export：${item.name}`,`Item Export: ${item.name}`,`导出项目：${item.name}`); codeText.textContent=tr("ここコード 項目データ","CoCo-Code Item Data","这里码 项目数据"); codeVerify.textContent="";
       qrcodeEl.innerHTML=""; barcode.innerHTML=""; qrcodeEl.classList.remove("hidden"); barcode.classList.add("hidden"); reconstructBtn.classList.add("hidden"); activeQrItem=null; showingReconstructed=false;
       const rendered=renderZxingQrSymbol(built.qr.symbol,Math.min(window.innerWidth*0.92,760),true);
       qrcodeEl.appendChild(rendered.canvas);
       const version=(rendered.modules-17)/4;
       const ratio=(built.damage*100).toFixed(1);
-      codeVerify.textContent=`項目export QR ／ Version ${version} ／ ECC=${built.ecc} ／ CoCo ${ratio}% ／ 位置情報 ${built.total}件${built.compressed?" ／ 圧縮":""}${built.padded?" ／ 安全余白":""}`;
+      codeVerify.textContent=tr(`項目export QR ／ Version ${version} ／ ECC=${built.ecc} ／ CoCo ${ratio}% ／ 位置情報 ${built.total}件${built.compressed?" ／ 圧縮":""}${built.padded?" ／ 安全余白":""}`,`Item Export QR / Version ${version} / ECC=${built.ecc} / CoCo ${ratio}% / Locations ${built.total}${built.compressed?" / Compressed":""}${built.padded?" / Safety margin":""}`,`项目导出二维码 ／ 版本 ${version} ／ ECC=${built.ecc} ／ CoCo ${ratio}% ／ 位置信息 ${built.total} 条${built.compressed?" ／ 已压缩":""}${built.padded?" ／ 安全余量":""}`);
       codeView.classList.add("show"); document.body.style.overflow="hidden";
       try{if("wakeLock" in navigator)wakeLock=await navigator.wakeLock.request("screen");}catch{}
     }
@@ -1390,17 +1436,34 @@
         panel.className="help-panel";
         panel.setAttribute("role","dialog"); panel.setAttribute("aria-modal","true");
         panel.style.maxWidth="560px";
-        const title=document.createElement("h2"); title.textContent="項目データを読み取りました";
+        const title=document.createElement("h2"); title.textContent=tr("項目データを読み取りました","Item Data Scanned","已读取项目数据");
         const info=document.createElement("p");
         info.style.whiteSpace="pre-line";
-        info.textContent=`名称：${raw.name}\n種類：${typeLabel({type})}\n位置情報：${locCount}件\n\n取り込み方法を選んでください。`;
+        info.textContent=tr(`名称：${raw.name}\n種類：${typeLabel({type})}\n位置情報：${locCount}件\n\n取り込み方法を選んでください。`,`Name: ${raw.name}\nType: ${typeLabel({type})}\nLocations: ${locCount}\n\nChoose how to import this item.`,`名称：${raw.name}\n类型：${typeLabel({type})}\n位置信息：${locCount} 条\n\n请选择导入方式。`);
         const actions=document.createElement("div");
         actions.style.display="grid"; actions.style.gap="10px"; actions.style.marginTop="18px";
         const make=(label,value,primary=false)=>{ const b=document.createElement("button"); b.type="button"; b.className=primary?"btn primary":"btn"; b.textContent=label; b.addEventListener("click",()=>finish(value)); return b; };
         const finish=value=>{ overlay.remove(); resolve(value); };
-        actions.append(make("位置情報だけ追加","locations",true),make("項目データを置き換え","replace"),make("キャンセル","cancel"));
+        actions.append(make(tr("位置情報だけ追加","Add Locations Only","仅添加位置信息"),"locations",true),make(tr("項目データを置き換え","Replace Item Data","替换项目数据"),"replace"),make(tr("キャンセル","Cancel","取消"),"cancel"));
         panel.append(title,info,actions); overlay.append(panel); document.body.append(overlay);
         overlay.addEventListener("pointerdown",e=>{if(e.target===overlay)finish("cancel");});
+      });
+    }
+
+    function appConfirm(message, okJa="OK", okEn="OK", okZh="确定") {
+      return new Promise(resolve=>{
+        const overlay=document.createElement("div");
+        overlay.style.cssText="position:fixed;inset:0;z-index:10050;background:rgba(0,0,0,.38);display:flex;align-items:center;justify-content:center;padding:24px";
+        const box=document.createElement("div");
+        box.style.cssText="width:min(420px,92vw);background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 12px 36px rgba(0,0,0,.28)";
+        const text=document.createElement("div");
+        text.style.cssText="white-space:pre-wrap;line-height:1.55;margin-bottom:18px"; text.textContent=message;
+        const actions=document.createElement("div"); actions.style.cssText="display:flex;justify-content:flex-end;gap:10px";
+        const cancel=document.createElement("button"); cancel.type="button"; cancel.className="btn"; cancel.textContent=tr("キャンセル","Cancel","取消");
+        const ok=document.createElement("button"); ok.type="button"; ok.className="btn primary"; ok.textContent=tr(okJa,okEn,okZh);
+        const finish=v=>{overlay.remove();resolve(v)}; cancel.onclick=()=>finish(false); ok.onclick=()=>finish(true);
+        overlay.addEventListener("pointerdown",e=>{if(e.target===overlay)finish(false)});
+        actions.append(cancel,ok); box.append(text,actions); overlay.appendChild(box); document.body.appendChild(overlay); ok.focus();
       });
     }
 
@@ -1420,11 +1483,11 @@
             editLocations.push(structuredClone(loc)); added++;
           }
           renderLocationList();
-          setScanStatus(`位置情報を${added}件追加しました。${duplicates?`（重複${duplicates}件は追加していません）`:""}内容を確認し、保存してください。`);
+          setScanStatus(tr(`位置情報を${added}件追加しました。${duplicates?`（重複${duplicates}件は追加していません）`:""}内容を確認し、保存してください。`,`Added ${added} location(s).${duplicates?` (${duplicates} duplicate(s) skipped.)`:""} Review the result and tap Save.`,`已添加 ${added} 个地点。${duplicates?`（已跳过 ${duplicates} 个重复地点）`:""}请确认内容后保存。`));
           return true;
         }
       }else{
-        const ok=confirm(`ここコードの項目データを読み取りました。\n\n名称：${raw.name}\n種類：${typeLabel({type})}\n位置情報：${locCount}件\n\nこの項目を取り込みますか？`);
+        const ok=await appConfirm(tr(`ここコードの項目データを読み取りました。\n\n名称：${raw.name}\n種類：${typeLabel({type})}\n位置情報：${locCount}件\n\nこの項目を取り込みますか？`,`CoCo-Code item data was scanned.\n\nName: ${raw.name}\nType: ${typeLabel({type})}\nLocations: ${locCount}\n\nImport this item?`,`已读取 CoCo-Code 项目数据。\n\n名称：${raw.name}\n类型：${typeLabel({type})}\n位置信息：${locCount} 条\n\n要导入此项目吗？`));
         if(!ok)return true;
       }
       nameInput.value=String(raw.name||"");
@@ -1441,7 +1504,7 @@
       editLocations=Array.isArray(raw.locations) ? structuredClone(raw.locations) : [];
       renderLocationList();
       manualFields.classList.remove("hidden");
-      manualToggleBtn.textContent="詳細設定を隠す";
+      manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置");
       updateFormFields();
       updateShortcutPreview();
       setScanStatus(`項目データを各入力欄に設定しました。内容を確認し、保存してください。`);
@@ -1455,7 +1518,7 @@
     helpOverlay.className="help-overlay";
     helpOverlay.setAttribute("aria-hidden","true");
     helpOverlay.innerHTML='<div class="help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle"></h2><p id="helpText"></p><button class="btn primary" type="button" data-help-close>閉じる</button></div>';
-    document.body.appendChild(helpOverlay);
+    document.body.appendChild(helpOverlay); translateDom(helpOverlay);
     const helpTitle=helpOverlay.querySelector("#helpTitle");
     const helpText=helpOverlay.querySelector("#helpText");
     function closeHelp(){helpOverlay.classList.remove("show");helpOverlay.setAttribute("aria-hidden","true");}
@@ -1747,7 +1810,7 @@
         const nextSettings=normalizeSettings(legacySettings);
         const validTagIds=new Set(nextSettings.tags.map(t=>t.id)); let rescued=0;
         const nextItems=data.items.map(x=>normalizeItem(x)).map(item=>{const before=item.tagIds.length;item.tagIds=item.tagIds.filter(id=>validTagIds.has(id));if(before!==item.tagIds.length)rescued++;return item;});
-        if (!confirm(`現在の${items.length}件を、読み込んだ${nextItems.length}件で置き換えますか？`)) return;
+        if (!await appConfirm(tr(`現在の${items.length}件を、読み込んだ${nextItems.length}件で置き換えますか？`,`Replace the current ${items.length} item(s) with the imported ${nextItems.length} item(s)?`,`要用导入的 ${nextItems.length} 个项目替换当前 ${items.length} 个项目吗？`))) return;
         // 検証・変換完了後にだけ現在データを書き換える。
         items=nextItems; settings=nextSettings; activeTab="star"; saveSettings(); saveItems(); applyLayoutTheme(); refreshTabs(); render(); closeDataModal();
         alert(`${items.length}件を読み込みました。${rescued ? `\n${rescued}項目で存在しないTagを外しました。` : ""}`);
@@ -1756,8 +1819,8 @@
       } finally { importFileInput.value=""; }
     }
 
-    function resetToInitialData() {
-      if (!confirm(tr("現在のデータと設定を削除し、初期状態に戻します。\nこの操作は元に戻せません。","Delete the current data and settings and restore the initial state?\nThis cannot be undone.","删除当前数据和设置并恢复初始状态？\n此操作无法撤销。"))) return;
+    async function resetToInitialData() {
+      if (!await appConfirm(tr("現在のデータと設定を削除し、初期状態に戻します。\nこの操作は元に戻せません。","Delete the current data and settings and restore the initial state?\nThis cannot be undone.","删除当前数据和设置并恢复初始状态？\n此操作无法撤销。"))) return;
       const resetLang=currentLanguage();
       settings=normalizeSettings(cloneInitial(resetLang === "en" ? INITIAL_SETTINGS_EN : resetLang === "zh" ? INITIAL_SETTINGS_ZH : INITIAL_SETTINGS));
       const validTagIds=new Set(settings.tags.map(t=>t.id));
@@ -1819,7 +1882,7 @@
         const txt=document.createElement("div"); txt.className="location-row-text";
         txt.innerHTML=`<strong></strong><br>${p.lat.toFixed(6)}, ${p.lng.toFixed(6)}`;
         txt.querySelector("strong").textContent=p.label || `地点${i+1}`;
-        const del=document.createElement("button"); del.type="button"; del.className="btn location-remove"; del.textContent="削除";
+        const del=document.createElement("button"); del.type="button"; del.className="btn location-remove"; del.textContent=tr("削除","Delete","删除");
         del.addEventListener("click",()=>{ editLocations.splice(i,1); renderLocationList(); });
         row.append(txt,del); locationList.appendChild(row);
       });
@@ -2470,7 +2533,7 @@
       barcodeFormatInput.value=mapped.barcodeFormat;
       currentCodeSpec={symbology:mapped.barcodeFormat,source,detected:{symbology:true}};
       manualFields.classList.remove("hidden");
-      manualToggleBtn.textContent="詳細設定を隠す";
+      manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置");
       updateFormFields();
       setScanStatus(`読み取り成功：${mapped.label} ／ ${text}`);
     }
@@ -2511,14 +2574,14 @@
               qr.spec.matrix=zxingMatrix;
             }
             valueInput.value=qr.text; typeInput.value="qr"; barcodeFormatInput.value="CODE128"; currentCodeSpec=qr.spec;
-            manualFields.classList.remove("hidden"); manualToggleBtn.textContent="詳細設定を隠す"; updateFormFields();
+            manualFields.classList.remove("hidden"); manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置"); updateFormFields();
             const ec=qr.spec.errorCorrection||"不明";
             const mask=Number.isInteger(qr.spec.maskPattern)?qr.spec.maskPattern:"不明";
             setScanStatus(`読み取り成功：QR Code ／ mode=${qr.spec.mode} ／ Version=${qr.spec.version||"不明"} ／ ECC=${ec} ／ Mask=${mask}${qr.spec.matrix?` ／ ${qr.spec.matrix.capture==="zxing3-camera-crop-reread"?"ZXing Crop再読込Symbol保存済み":qr.spec.matrix.capture==="zxing3-symbol"?"ZXing Symbol保存済み":"デコーダ抽出Matrix保存済み"}`:""}`);
           }else{
             valueInput.value=result.text; typeInput.value="qr"; barcodeFormatInput.value="CODE128";
             currentCodeSpec={symbology:"QR_CODE",source:"camera",detected:{symbology:true,mode:false,version:false,errorCorrection:false,maskPattern:false},mode:inferQrMode(result.text),segments:[{mode:inferQrMode(result.text),text:result.text}]};
-            manualFields.classList.remove("hidden"); manualToggleBtn.textContent="詳細設定を隠す"; updateFormFields();
+            manualFields.classList.remove("hidden"); manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置"); updateFormFields();
             setScanStatus("QRは認識しましたが、詳細情報の取得に失敗しました。",true);
           }
         }else{
@@ -2563,7 +2626,7 @@
               qr.spec.matrix=zxingMatrix;
             }
             valueInput.value=qr.text; typeInput.value="qr"; barcodeFormatInput.value="CODE128"; currentCodeSpec=qr.spec;
-            manualFields.classList.remove("hidden"); manualToggleBtn.textContent="詳細設定を隠す"; updateFormFields();
+            manualFields.classList.remove("hidden"); manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置"); updateFormFields();
             const ec=qr.spec.errorCorrection||"不明";
             const mask=Number.isInteger(qr.spec.maskPattern)?qr.spec.maskPattern:"不明";
             setScanStatus(`読み取り成功：QR Code ／ mode=${qr.spec.mode} ／ Version=${qr.spec.version||"不明"} ／ ECC=${ec} ／ Mask=${mask}${qr.spec.matrix?` ／ ${qr.spec.matrix.capture==="zxing3-symbol"?"ZXing Symbol保存済み":"デコーダ抽出Matrix保存済み"}`:""}`);
@@ -2666,11 +2729,11 @@
         fitCameraPreviewToVideo(video);
         cameraRunning=true;
         // カメラ開始時は認識枠全体が見える位置へ移動する。
-        cameraScanBtn.textContent="カメラを停止";
+        cameraScanBtn.textContent=tr("カメラを停止","Stop Camera","停止相机");
         cameraDetectBtn.classList.remove("hidden");
         cameraDetectBtn.classList.add("camera-detect-fixed");
         cameraDetectBtn.disabled=false;
-        cameraDetectBtn.textContent="検出開始";
+        cameraDetectBtn.textContent=tr("検出開始","Start Detection","开始检测");
         setScanStatus("大きな枠を目安にコードを映し、ピントと位置を整えてから「検出開始」を押してください。");
       }catch(e){
         if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null;}
@@ -2688,11 +2751,11 @@
       const video=reader.querySelector("video");
       if(video) video.srcObject=null;
       reader.innerHTML="";
-      cameraScanBtn.textContent="カメラで読み取る";
+      cameraScanBtn.textContent=tr("カメラで読み取る","Scan Camera","用相机扫描");
       cameraDetectBtn.classList.add("hidden");
       cameraDetectBtn.classList.remove("camera-detect-fixed");
       cameraDetectBtn.disabled=false;
-      cameraDetectBtn.textContent="検出開始";
+      cameraDetectBtn.textContent=tr("検出開始","Start Detection","开始检测");
       cameraGuide.classList.add("hidden"); hideDetectionBox(); readerWrap.style.height=""; readerWrap.classList.add("hidden");
     }
 
@@ -2755,11 +2818,11 @@
       closeEdit();
     }
 
-    function deleteItem(id) {
+    async function deleteItem(id) {
       if (!id) return;
       const item = items.find(x => x.id === id);
       if (!item) return;
-      if (!confirm(`ID項目「${item.name}」を削除しますか？`)) return;
+      if (!await appConfirm(tr(`ID項目「${item.name}」を削除しますか？`,`Delete ID item “${item.name}”?`,`确定删除 ID 项目“${item.name}”吗？`),"削除","Delete","删除")) return;
       items = items.filter(x => x.id !== id);
       saveItems();
       render();
@@ -3042,9 +3105,9 @@
     let tabDraft=[]; let tabDraftDrag=null;
     function openTabSettings(){tabDraft=settings.tags.map(t=>({...t}));updateColorButton(tabSettingsStarColor,settings.starColor);updateColorButton(tabSettingsLocationColor,settings.locationColor);updateColorButton(tabSettingsSearchColor,settings.searchColor);updateColorButton(tabSettingsUntaggedColor,settings.untaggedColor);renderTabSettings();translateDom(tabSettingsModal);tabSettingsModal.classList.add("show");tabSettingsModal.setAttribute("aria-hidden","false");syncTabSettingsViewport();}
     function closeTabSettings(){releaseFormFocus();tabSettingsModal.classList.remove("show");tabSettingsModal.setAttribute("aria-hidden","true");}
-    function renderTabSettings(){tabSettingsList.innerHTML="";tabDraft.forEach((t,i)=>{const row=document.createElement("div");row.className="group-setting-row tab-setting-row";row.dataset.index=String(i);const h=document.createElement("button");h.type="button";h.className="tab-setting-handle";h.textContent="≡";h.setAttribute("aria-label",`${t.name}を並び替え`);h.addEventListener("pointerdown",e=>beginTabDraftDrag(e,i));const inp=document.createElement("input");inp.maxLength=12;inp.value=t.name;inp.addEventListener("input",()=>t.name=inp.value);const col=document.createElement("button");col.type="button";col.className="color-current";col.innerHTML='<span class="color-current-swatch"></span>';updateColorButton(col,t.color);wireColorButton(col,t.color,c=>{t.color=c;updateColorButton(col,c);},`${t.name||`Tag${i+1}`}の色`);wireHelpLongPress(col,"タブの色",()=>`「${t.name||`Tag${i+1}`}」タブの表示色を変更します。`);const del=document.createElement("button");del.type="button";del.className="btn tab-delete";del.textContent="削除";del.addEventListener("click",()=>deleteTabDraft(i));row.append(h,inp,col,del);tabSettingsList.appendChild(row);});}
+    function renderTabSettings(){tabSettingsList.innerHTML="";tabDraft.forEach((t,i)=>{const row=document.createElement("div");row.className="group-setting-row tab-setting-row";row.dataset.index=String(i);const h=document.createElement("button");h.type="button";h.className="tab-setting-handle";h.textContent="≡";h.setAttribute("aria-label",`${t.name}を並び替え`);h.addEventListener("pointerdown",e=>beginTabDraftDrag(e,i));const inp=document.createElement("input");inp.maxLength=12;inp.value=t.name;inp.addEventListener("input",()=>t.name=inp.value);const col=document.createElement("button");col.type="button";col.className="color-current";col.innerHTML='<span class="color-current-swatch"></span>';updateColorButton(col,t.color);wireColorButton(col,t.color,c=>{t.color=c;updateColorButton(col,c);},`${t.name||`Tag${i+1}`}の色`);wireHelpLongPress(col,tr("タブの色","Tab Color","标签页颜色"),()=>tr(`「${t.name||`Tag${i+1}`}」タブの表示色を変更します。`,`Change the display color of the “${t.name||`Tag${i+1}`}” tab.`,`更改“${t.name||`Tag${i+1}`}”标签页的显示颜色。`));const del=document.createElement("button");del.type="button";del.className="btn tab-delete";del.textContent=tr("削除","Delete","删除");del.addEventListener("click",()=>deleteTabDraft(i));row.append(h,inp,col,del);tabSettingsList.appendChild(row);});}
     function addTabDraft(){const n=tabDraft.length+1;tabDraft.push({id:crypto.randomUUID(),name:`Tag${n}`,color:DEFAULT_GROUP_COLORS[(n-1)%DEFAULT_GROUP_COLORS.length]});renderTabSettings();}
-    function deleteTabDraft(i){const t=tabDraft[i];const count=items.filter(x=>x.tagIds.includes(t.id)).length;if(!confirm(`Tag「${t.name||`Tag${i+1}`}」を削除します。${count}項目からこのTagだけを外します。ID項目自体は削除されません。`))return;tabDraft.splice(i,1);renderTabSettings();}
+    async function deleteTabDraft(i){const t=tabDraft[i];const count=items.filter(x=>x.tagIds.includes(t.id)).length;if(!await appConfirm(tr(`Tag「${t.name||`Tag${i+1}`}」を削除します。${count}項目からこのTagだけを外します。ID項目自体は削除されません。`,`Delete Tag “${t.name||`Tag${i+1}`}”? This Tag will be removed from ${count} item(s); the ID items themselves will not be deleted.`,`要删除 Tag“${t.name||`Tag${i+1}`}”吗？将从 ${count} 个项目中移除此 Tag，但不会删除 ID 项目本身。`),"削除","Delete","删除"))return;tabDraft.splice(i,1);renderTabSettings();}
     function beginTabDraftDrag(e,index){e.preventDefault();const row=e.currentTarget.closest(".tab-setting-row");e.currentTarget.setPointerCapture?.(e.pointerId);tabDraftDrag={pointerId:e.pointerId,row,from:index,to:index,startY:e.clientY};row.style.willChange="transform";row.classList.add("dragging");document.addEventListener("pointermove",moveTabDraftDrag,{passive:false});document.addEventListener("pointerup",endTabDraftDrag,{once:true});document.addEventListener("pointercancel",endTabDraftDrag,{once:true});}
     function moveTabDraftDrag(e){if(!tabDraftDrag||e.pointerId!==tabDraftDrag.pointerId)return;e.preventDefault();const dy=e.clientY-tabDraftDrag.startY;tabDraftDrag.row.style.transform=`translateY(${dy}px)`;const rows=[...tabSettingsList.querySelectorAll(".tab-setting-row")];let target=rows.length-1;for(let i=0;i<rows.length;i++){const r=rows[i].getBoundingClientRect();if(e.clientY<r.top+r.height/2){target=i;break;}}tabDraftDrag.to=Math.max(0,Math.min(target,rows.length-1));rows.forEach((r,i)=>r.classList.toggle("drag-target",i===tabDraftDrag.to&&r!==tabDraftDrag.row));}
     function endTabDraftDrag(){if(!tabDraftDrag)return;const{from,to,row}=tabDraftDrag;row.style.transform="";row.style.willChange="";if(from!==to){const[m]=tabDraft.splice(from,1);tabDraft.splice(to,0,m);}tabDraftDrag=null;renderTabSettings();}
@@ -3152,7 +3215,7 @@
     cameraDetectBtn.addEventListener("click", () => {
       if(!cameraRunning || frameDecodeTimer) return;
       cameraDetectBtn.disabled=true;
-      cameraDetectBtn.textContent="検出中…";
+      cameraDetectBtn.textContent=tr("検出中…","Detecting…","检测中…");
       setScanStatus("検出中です。コードをそのまま枠内に保持してください。");
       startHighResolutionFrameScan();
     });
