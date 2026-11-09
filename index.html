@@ -239,7 +239,7 @@
       content:""; position:absolute; top:100%; left:0;
       width:1px; height:2px; pointer-events:none;
     }
-    /* v2.69 startup diagnostic: visible before app JavaScript initialization completes. */
+    /* v2.70 startup diagnostic: visible before app JavaScript initialization completes. */
     #startupProbe { position:fixed; inset:0; z-index:99999; display:flex; align-items:center; justify-content:center; background:var(--bg); color:var(--text); font-weight:700; }
     #startupProbe.hidden { display:none; }
   </style>
@@ -249,7 +249,7 @@
   <div class="app">
     <header>
       <div>
-        <div class="title-row"><h1>ここコード</h1><span class="header-version">v2.69</span></div>
+        <div class="title-row"><h1>ここコード</h1><span class="header-version">v2.70</span></div>
         <div class="sub">ここで使うコードを、今すぐ表示！</div>
       </div>
       <div class="toolbar">
@@ -278,7 +278,7 @@
       <main id="listRight" class="list" aria-label="ID一覧 右側"></main>
 
       <div class="footnote">
-        v2.69 — item menu wording and add/edit title clarification; startup diagnostic retained.
+        v2.70 — item menu wording and add/edit title clarification; startup diagnostic retained.
       </div>
     </div>
   </div>
@@ -364,11 +364,10 @@
         <button class="btn scan-btn hidden" id="cameraDetectBtn" type="button" style="width:100%;margin-top:10px">検出開始</button>
         <div class="scan-status" id="scanStatus">QRコード／主要バーコードを自動判定します。</div>
         <button class="btn app-register-btn" id="appRegisterBtn" type="button">公式アプリを登録</button>
-        <button class="btn manual-toggle" id="manualToggleBtn" type="button">手入力・詳細設定</button>
+        
       </div>
 
-      <div id="manualFields" class="hidden">
-        <div class="field">
+      <div class="field">
           <label for="type">動作</label>
           <select id="type">
             <option value="app1">App1　URLスキームでアプリ起動</option>
@@ -378,8 +377,9 @@
             <option value="barcode">BAR　バーコードを表示</option>
             <option value="memo">Memo　メモを表示</option>
           </select>
-        </div>
+      </div>
 
+      <div id="manualFields">
         <div class="field" id="barcodeFormatField">
           <label for="barcodeFormat">バーコード形式</label>
           <select id="barcodeFormat">
@@ -778,7 +778,7 @@
       const appTitle=document.querySelector("header h1");
       if(appTitle) appTitle.textContent=lang==="ja"?"ここコード":lang==="zh"?"这里码":"CoCo-Code";
       const headerVersion=document.querySelector(".header-version");
-      if(headerVersion) headerVersion.textContent="v2.69";
+      if(headerVersion) headerVersion.textContent="v2.70";
       document.title=lang==="ja"?"ここコード":lang==="zh"?"这里码":"CoCo-Code";
       render?.();
       if(appTitle) appTitle.textContent=lang==="ja"?"ここコード":lang==="zh"?"这里码":"CoCo-Code";
@@ -867,7 +867,7 @@
     const detectBox = document.getElementById("detectBox");
     const detectLabel = document.getElementById("detectLabel");
     const scanStatus = document.getElementById("scanStatus");
-    const manualToggleBtn = document.getElementById("manualToggleBtn");
+
     const manualFields = document.getElementById("manualFields");
     const locationList = document.getElementById("locationList");
     const addCurrentLocationBtn = document.getElementById("addCurrentLocationBtn");
@@ -1510,7 +1510,6 @@
       editLocations=Array.isArray(raw.locations) ? structuredClone(raw.locations) : [];
       renderLocationList();
       manualFields.classList.remove("hidden");
-      manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置");
       updateFormFields();
       updateShortcutPreview();
       setScanStatus(`項目データを各入力欄に設定しました。内容を確認し、保存してください。`);
@@ -1869,8 +1868,7 @@
       renderLocationList();
       editPrimaryActions.style.gridTemplateColumns = "1fr";
       editPrimaryActions.classList.toggle("hidden", !item);
-      manualFields.classList.toggle("hidden", !item);
-      manualToggleBtn.textContent = item ? "詳細設定を隠す" : "手入力・詳細設定";
+      manualFields.classList.remove("hidden");
       scanStatus.textContent = item ? "登録済みコードです。再読み取りすると置き換わります。" : "QRコード／主要バーコードを自動判定します。";
 
       stopCamera();
@@ -2543,7 +2541,6 @@
       barcodeFormatInput.value=mapped.barcodeFormat;
       currentCodeSpec={symbology:mapped.barcodeFormat,source,detected:{symbology:true}};
       manualFields.classList.remove("hidden");
-      manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置");
       updateFormFields();
       setScanStatus(`読み取り成功：${mapped.label} ／ ${text}`);
     }
@@ -2583,15 +2580,13 @@
               zxingMatrix.capture = reread ? "zxing3-camera-crop-reread" : "zxing3-symbol";
               qr.spec.matrix=zxingMatrix;
             }
-            valueInput.value=qr.text; typeInput.value="qr"; barcodeFormatInput.value="CODE128"; currentCodeSpec=qr.spec;
-            manualFields.classList.remove("hidden"); manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置"); updateFormFields();
+            valueInput.value=qr.text; typeInput.value="qr"; barcodeFormatInput.value="CODE128"; currentCodeSpec=qr.spec; updateFormFields();
             const ec=qr.spec.errorCorrection||"不明";
             const mask=Number.isInteger(qr.spec.maskPattern)?qr.spec.maskPattern:"不明";
             setScanStatus(`読み取り成功：QR Code ／ mode=${qr.spec.mode} ／ Version=${qr.spec.version||"不明"} ／ ECC=${ec} ／ Mask=${mask}${qr.spec.matrix?` ／ ${qr.spec.matrix.capture==="zxing3-camera-crop-reread"?"ZXing Crop再読込Symbol保存済み":qr.spec.matrix.capture==="zxing3-symbol"?"ZXing Symbol保存済み":"デコーダ抽出Matrix保存済み"}`:""}`);
           }else{
             valueInput.value=result.text; typeInput.value="qr"; barcodeFormatInput.value="CODE128";
-            currentCodeSpec={symbology:"QR_CODE",source:"camera",detected:{symbology:true,mode:false,version:false,errorCorrection:false,maskPattern:false},mode:inferQrMode(result.text),segments:[{mode:inferQrMode(result.text),text:result.text}]};
-            manualFields.classList.remove("hidden"); manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置"); updateFormFields();
+            currentCodeSpec={symbology:"QR_CODE",source:"camera",detected:{symbology:true,mode:false,version:false,errorCorrection:false,maskPattern:false},mode:inferQrMode(result.text),segments:[{mode:inferQrMode(result.text),text:result.text}]}; updateFormFields();
             setScanStatus("QRは認識しましたが、詳細情報の取得に失敗しました。",true);
           }
         }else{
@@ -2635,8 +2630,7 @@
             if(zxingMatrix){
               qr.spec.matrix=zxingMatrix;
             }
-            valueInput.value=qr.text; typeInput.value="qr"; barcodeFormatInput.value="CODE128"; currentCodeSpec=qr.spec;
-            manualFields.classList.remove("hidden"); manualToggleBtn.textContent=tr("詳細設定を隠す","Hide Advanced Settings","收起高级设置"); updateFormFields();
+            valueInput.value=qr.text; typeInput.value="qr"; barcodeFormatInput.value="CODE128"; currentCodeSpec=qr.spec; updateFormFields();
             const ec=qr.spec.errorCorrection||"不明";
             const mask=Number.isInteger(qr.spec.maskPattern)?qr.spec.maskPattern:"不明";
             setScanStatus(`読み取り成功：QR Code ／ mode=${qr.spec.mode} ／ Version=${qr.spec.version||"不明"} ／ ECC=${ec} ／ Mask=${mask}${qr.spec.matrix?` ／ ${qr.spec.matrix.capture==="zxing3-symbol"?"ZXing Symbol保存済み":"デコーダ抽出Matrix保存済み"}`:""}`);
@@ -3039,7 +3033,6 @@
     wireHelpLongPress(imageScanBtn,"画像から読み取る","写真や保存画像に含まれるQRコード／バーコードを読み取って登録します。");
     wireHelpLongPress(cameraScanBtn,"カメラで読み取る","カメラでQRコード／バーコードを読み取って登録します。");
     wireHelpLongPress(appRegisterBtn,"公式アプリを登録","QRコードなどをここコードに保存せず、必要なときに公式アプリを起動する項目を登録します。");
-    wireHelpLongPress(manualToggleBtn,"手入力・詳細設定","コード内容や種類などを手入力・確認するための詳細設定を表示／非表示にします。");
     wireHelpLongPress(copyShortcutNameBtn,"名前をコピー","ショートカット作成に使う名前をクリップボードへコピーします。");
     wireHelpLongPress(createShortcutBtn,"作成を開始","Appleショートカットの作成を開始します。");
     wireHelpLongPress(testShortcutBtn,"起動テスト","登録したショートカットから目的のアプリが起動するか確認します。");
@@ -3158,7 +3151,6 @@
     appRegisterBtn.addEventListener("click", async () => {
       await stopCamera();
       manualFields.classList.remove("hidden");
-      manualToggleBtn.textContent = "詳細設定を隠す";
       typeInput.value = "shortcut";
       valueInput.value = suggestedShortcutName();
       updateFormFields();
@@ -3228,10 +3220,6 @@
       cameraDetectBtn.textContent=tr("検出中…","Detecting…","检测中…");
       setScanStatus("検出中です。コードをそのまま枠内に保持してください。");
       startHighResolutionFrameScan();
-    });
-    manualToggleBtn.addEventListener("click", () => {
-      const hidden = manualFields.classList.toggle("hidden");
-      manualToggleBtn.textContent = hidden ? "手入力・詳細設定" : "詳細設定を隠す";
     });
     async function renderReconstructedQr(item) {
       await ensureZxing();
