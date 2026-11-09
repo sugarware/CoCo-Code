@@ -363,7 +363,6 @@
         </div>
         <button class="btn scan-btn hidden" id="cameraDetectBtn" type="button" style="width:100%;margin-top:10px">検出開始</button>
         <div class="scan-status" id="scanStatus">QRコード／主要バーコードを自動判定します。</div>
-        <button class="btn app-register-btn" id="appRegisterBtn" type="button">公式アプリを登録</button>
         
       </div>
 
@@ -879,7 +878,6 @@
     const mapSearchResults = document.getElementById("mapSearchResults");
     const cancelMapBtn = document.getElementById("cancelMapBtn");
     const confirmMapBtn = document.getElementById("confirmMapBtn");
-    const appRegisterBtn = document.getElementById("appRegisterBtn");
     const shortcutSetupField = document.getElementById("shortcutSetupField");
     const shortcutNamePreview = document.getElementById("shortcutNamePreview");
     const copyShortcutNameBtn = document.getElementById("copyShortcutNameBtn");
@@ -3032,7 +3030,6 @@
     wireHelpLongPress(addGroupBtn,"Tag追加","新しいTagを追加します。1つのID項目には複数のTagを付けられます。");
     wireHelpLongPress(imageScanBtn,"画像から読み取る","写真や保存画像に含まれるQRコード／バーコードを読み取って登録します。");
     wireHelpLongPress(cameraScanBtn,"カメラで読み取る","カメラでQRコード／バーコードを読み取って登録します。");
-    wireHelpLongPress(appRegisterBtn,"公式アプリを登録","QRコードなどをここコードに保存せず、必要なときに公式アプリを起動する項目を登録します。");
     wireHelpLongPress(copyShortcutNameBtn,"名前をコピー","ショートカット作成に使う名前をクリップボードへコピーします。");
     wireHelpLongPress(createShortcutBtn,"作成を開始","Appleショートカットの作成を開始します。");
     wireHelpLongPress(testShortcutBtn,"起動テスト","登録したショートカットから目的のアプリが起動するか確認します。");
@@ -3147,16 +3144,6 @@
       }
     });
     valueInput.addEventListener("input", updateShortcutPreview);
-
-    appRegisterBtn.addEventListener("click", async () => {
-      await stopCamera();
-      manualFields.classList.remove("hidden");
-      typeInput.value = "shortcut";
-      valueInput.value = suggestedShortcutName();
-      updateFormFields();
-      setScanStatus("App2：公式アプリをAppleショートカット経由で起動します。");
-      if (!nameInput.value.trim()) nameInput.focus();
-    });
 
     copyShortcutNameBtn.addEventListener("click", async () => {
       updateShortcutPreview();
